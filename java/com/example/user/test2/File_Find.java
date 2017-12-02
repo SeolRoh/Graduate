@@ -107,15 +107,54 @@ public class File_Find extends AppCompatActivity {
                         }).show();
             }
         }
+        //파일 일 때
         else{
-            new AlertDialog.Builder(this)
-                    .setTitle("[" + file.getName() + "]")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+            //누른 파일이 텍스트 파일이면
+            if(file.getName().endsWith(".txt"))
+            {
+                AlertDialog.Builder alert = new AlertDialog.Builder(File_Find.this);
+                alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+//확인 버튼 누르면 이 텍스트 파일을 읽어 와야됨.
+                    }
+                }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //취소 버튼 눌렀을 때, 아무일도 없어도 됨.
+                    }
+                });
+                alert.setMessage("이 파일을 변환 하시겠습니까?");
+                alert.show();
+            }
+            //누른 파일이 epub 파일이면
+            else if(file.getName().endsWith(".epub"))
+            {
+                AlertDialog.Builder alert = new AlertDialog.Builder(File_Find.this);
+                alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+//확인 버튼 누르면 이 epbu 파일을 읽어 와야됨.
+                    }
+                }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //취소 버튼 눌렀을 때, 아무일도 없어도 됨.
+                    }
+                });
+                alert.setMessage("이 파일을 변환 하시겠습니까?");
+                alert.show();
+            }
+            else {
+                new AlertDialog.Builder(this)
+                        .setTitle("[" + file.getName() + "]")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
 
-                        }
-                    }).show();
+                            }
+                        }).show();
+            }
         }
     }
     private void Move_folder()
