@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Request_Permission" />
-        <activity android:name=".File_Find"></activity>
+        <activity android:name=".File_Find" />
+        <activity android:name=".File_Read"></activity>
     </application>
 
 </manifest>

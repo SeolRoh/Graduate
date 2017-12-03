@@ -3,6 +3,7 @@ package com.example.user.test2;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
@@ -109,6 +110,8 @@ public class File_Find extends AppCompatActivity {
         }
         //파일 일 때
         else{
+            final String Name = file.getName();
+            final String Path = file.getPath();
             //누른 파일이 텍스트 파일이면
             if(file.getName().endsWith(".txt"))
             {
@@ -117,14 +120,22 @@ public class File_Find extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 //확인 버튼 누르면 이 텍스트 파일을 읽어 와야됨.
+                        //다른 액티비티에서 읽어 올려고 함.
+                        Intent intent = new Intent(
+                                getApplicationContext(), File_Read.class);
+                        intent.putExtra("File_Name", Name);
+                        intent.putExtra("Filee_Path", Path);
+                        startActivity(intent);
+                        finish();
                     }
-                }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                }).setNegativeButton("취소",
+                        new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //취소 버튼 눌렀을 때, 아무일도 없어도 됨.
                     }
                 });
-                alert.setMessage("이 파일을 변환 하시겠습니까?");
+                alert.setMessage("이 텍스트 파일을 변환 하시겠습니까?");
                 alert.show();
             }
             //누른 파일이 epub 파일이면
@@ -142,7 +153,7 @@ public class File_Find extends AppCompatActivity {
                         //취소 버튼 눌렀을 때, 아무일도 없어도 됨.
                     }
                 });
-                alert.setMessage("이 파일을 변환 하시겠습니까?");
+                alert.setMessage("이 전자책 파일을 변환 하시겠습니까?");
                 alert.show();
             }
             else {
