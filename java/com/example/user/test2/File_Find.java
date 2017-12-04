@@ -75,12 +75,12 @@ public class File_Find extends AppCompatActivity {
       for(int i=0; i<files.length;i++)
         {
            File f = files[i];
-           pathFiles.add(file.getPath());
+           pathFiles.add(f.getPath());
 
-           if(file.isDirectory())
-               itemFiles.add(file.getName()+"/");
+           if(f.isDirectory())
+               itemFiles.add(f.getName()+"/");
            else
-               itemFiles.add(file.getName());
+               itemFiles.add(f.getName());
         }
         Move_folder();
     }
